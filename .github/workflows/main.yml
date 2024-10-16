@@ -1,8 +1,8 @@
 name: semanal1
 on:
   workflow_dispatch:
-jobs:
 
+jobs:
   CI:
     # if: github.ref == 'refs/heads/development'
     uses: ./.github/workflows/CI.yaml
