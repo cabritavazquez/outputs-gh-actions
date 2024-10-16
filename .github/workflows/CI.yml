@@ -19,7 +19,7 @@ jobs:
     needs: ci_test
     runs-on: ubuntu-latest
     outputs:
-       image_name: ${{ steps.wf-output.outputs.mi-output }}
+       mi-output: ${{ steps.wf-output.outputs.mi-output }}
     steps:
       - name: Print
         run: |
