@@ -1,0 +1,23 @@
+name: semanal1
+on:
+  workflow_dispatch:
+jobs:
+
+  CI:
+    # if: github.ref == 'refs/heads/development'
+    uses: ./.github/workflows/CI.yaml
+    secrets: inherit
+
+  # CD:
+  #   needs: CI
+  #   uses: ./.github/workflows/CD.yml
+  #   with:
+  #     image_name: ${{ needs.CI.outputs.image_name }}
+  #   secrets: inherit
+
+  Echo_Output:
+    needs: CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo image_name
+        run: echo "El output del reusable anterior ${{ needs.CI.outputs.mi-output }}"

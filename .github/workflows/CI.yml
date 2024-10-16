@@ -1,0 +1,30 @@
+name: CI
+on:  
+  workflow_call:
+    outputs: 
+      image_name: 
+        value: ${{ jobs.ci.outputs.mi-output }}
+
+jobs: 
+  ci_test:
+    runs-on: ubuntu-latest
+    outputs:
+       var: ${{ steps.output1.outputs.value }}
+    steps:
+      - name: output 1
+        id: output1
+        run: |
+          echo "value=hola" >> $GITHUB_OUTPUT
+  ci:
+    needs: ci_test
+    runs-on: ubuntu-latest
+    outputs:
+       image_name: ${{ steps.wf-output.outputs.mi-output }}
+    steps:
+      - name: Print
+        run: |
+          echo valor ci_test output var ${{ needs.ci_test.outputs.var }}     
+      - name: Mi output como reusable
+        id: wf-output
+        run: |
+          echo "mi-output=AAAAAAAA"  
