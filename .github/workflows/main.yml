@@ -5,7 +5,7 @@ on:
 jobs:
   CI:
     # if: github.ref == 'refs/heads/development'
-    uses: ./.github/workflows/CI.yaml
+    uses: ./.github/workflows/CI.yml
     secrets: inherit
 
   # CD:
