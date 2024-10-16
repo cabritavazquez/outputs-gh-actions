@@ -27,4 +27,4 @@ jobs:
       - name: Mi output como reusable
         id: wf-output
         run: |
-          echo "mi-output=AAAAAAAA"  
+          echo "mi-output=AAAAAAAA" >> $GITHUB_OUTPUT
