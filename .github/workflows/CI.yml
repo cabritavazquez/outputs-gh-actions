@@ -3,7 +3,7 @@ on:
   workflow_call:
     outputs: 
       image_name: 
-        value: ${{ jobs.ci.outputs.mi-output }}
+        value: ${{ jobs.ci.outputs.mi-output-val }}
 
 jobs: 
   ci_test:
@@ -19,7 +19,7 @@ jobs:
     needs: ci_test
     runs-on: ubuntu-latest
     outputs:
-       mi-output: ${{ steps.wf-output.outputs.mi-output }}
+       mi-output-val: ${{ steps.wf-output.outputs.mi-output }}
     steps:
       - name: Print
         run: |

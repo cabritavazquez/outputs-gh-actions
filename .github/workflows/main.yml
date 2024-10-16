@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  CI:
+  job1:
     # if: github.ref == 'refs/heads/development'
     uses: ./.github/workflows/CI.yml
     secrets: inherit
@@ -16,8 +16,8 @@ jobs:
   #   secrets: inherit
 
   Echo_Output:
-    needs: CI
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Echo image_name
-        run: echo "El output del reusable anterior ${{ needs.CI.outputs.mi-output }}"
+        run: echo "El output del reusable anterior ${{ needs.job1.outputs.image_name }}"
